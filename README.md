@@ -32,3 +32,22 @@ On macos, with virtual environment active, ran
     pip install --upgrade pip
 
 This installed flask to venv, ignored by git.
+
+## raspberry pi
+Cloned repo beepscore/pi-thing, pulled latest changes.
+
+Tried to create virtual environment on pi.
+
+    pyvenv venv
+
+pyvenv command not found
+https://www.raspberrypi.org/forums/viewtopic.php?f=32&t=129797
+
+    sudo apt-get install python3-venv
+    pyvenv venv
+    source ./venv/bin/activate
+    (venv) pi@pika:~/beepscore/pi-thing $
+
+### install flask
+
+    pip install flask
