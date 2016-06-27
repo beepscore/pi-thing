@@ -26,6 +26,8 @@ http://www.adafruit.com/products/2358
 # Results
 
 ## Flask
+
+### macos
 On macos, with virtual environment active, ran
 
     pip install flask.
@@ -33,7 +35,15 @@ On macos, with virtual environment active, ran
 
 This installed flask to venv, ignored by git.
 
-## raspberry pi
+#### start flask server
+
+    cd webapp
+    python main.py
+
+On macos browser go to url http://0.0.0.0:5000/
+mac can see "Hello World"
+
+### raspberry pi
 Cloned repo beepscore/pi-thing, pulled latest changes.
 
 Tried to create virtual environment on pi.
@@ -48,6 +58,17 @@ https://www.raspberrypi.org/forums/viewtopic.php?f=32&t=129797
     source ./venv/bin/activate
     (venv) pi@pika:~/beepscore/pi-thing $
 
-### install flask
+#### install flask
 
     pip install flask
+
+#### start flask server
+
+    cd webapp
+    python main.py
+
+On raspberry pi desktop browser go to url http://0.0.0.0:5000/
+Pi can see "Hello World"
+
+On macos browser go to url http://0.0.0.0:5000/
+mac can't see "Hello World"
