@@ -45,8 +45,9 @@ This installed flask to venv, ignored by git.
     cd webapp
     python main.py
 
-On macos browser go to url http://0.0.0.0:5000/
+On macos browser go to url http://0.0.0.0:5000/ or http://10.0.0.11:5000/
 mac can see "Hello World"
+url http://0.0.0.0:5000/foo shows "Achoo Foo!"
 
 ### raspberry pi
 Cloned repo beepscore/pi-thing, pulled latest changes.
