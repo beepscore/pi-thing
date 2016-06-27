@@ -77,5 +77,6 @@ https://www.raspberrypi.org/forums/viewtopic.php?f=32&t=129797
 On raspberry pi desktop browser go to url http://0.0.0.0:5000/
 Pi can see "Hello World"
 
-On macos browser go to url http://0.0.0.0:5000/
-mac can't see "Hello World"
+Fing.app shows pi wifi address is http://10.0.0.19
+On macos browser go to url http://10.0.0.19:5000/
+mac can see "Hello World"
