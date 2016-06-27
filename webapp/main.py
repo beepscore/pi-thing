@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 
-from flask import Flask
+# import * to get render_template
+from flask import *
 app = Flask(__name__)
 
 # default route raspberry pi /
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return render_template('index.html')
 
 @app.route("/foo")
 def achoo():
