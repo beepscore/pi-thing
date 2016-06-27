@@ -15,6 +15,11 @@ https://www.youtube.com
 https://github.com/adafruit/Pi_Internet_Thing_Videos
 MIT license
 
+## pip
+Use apt-get instead of pip where possible.
+If package is not available via apt-get, can use pip
+https://www.raspberrypi.org/documentation/linux/software/python.md
+
 ## flask
 http://flask.pocoo.org/
 
@@ -51,6 +56,8 @@ Tried to create virtual environment on pi.
     pyvenv venv
 
 pyvenv command not found
+
+#### install python3-venv
 https://www.raspberrypi.org/forums/viewtopic.php?f=32&t=129797
 
     sudo apt-get install python3-venv
