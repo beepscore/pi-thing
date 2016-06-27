@@ -23,6 +23,9 @@ https://www.raspberrypi.org/documentation/linux/software/python.md
 ## flask
 http://flask.pocoo.org/
 
+## html templates
+https://html5boilerplate.com/
+
 ## Equipment
 
 ### Raspberry Pi 2 - Model B - ARMv7 with 1G RAM
