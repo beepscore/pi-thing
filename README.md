@@ -25,3 +25,10 @@ http://www.adafruit.com/products/2358
 
 # Results
 
+## Flask
+On macos, with virtual environment active, ran
+
+    pip install flask.
+    pip install --upgrade pip
+
+This installed flask to venv, ignored by git.
