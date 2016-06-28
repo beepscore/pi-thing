@@ -26,6 +26,9 @@ http://flask.pocoo.org/
 ## html templates
 https://html5boilerplate.com/
 
+## RPi.GPIO
+https://pypi.python.org/pypi/RPi.GPIO
+
 ## Equipment
 
 ### Raspberry Pi 2 - Model B - ARMv7 with 1G RAM
