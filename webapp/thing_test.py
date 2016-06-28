@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import time
+
 from thing import PiThing
 
 
