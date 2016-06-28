@@ -22,7 +22,7 @@ class PiThing(object):
     def read_switch(self):
         """returns true if switch is high, false if switch is low
         """
-        return gpio.input(SWITCH_PIN)
+        return GPIO.input(SWITCH_PIN)
 
 
     def set_led(self, value):
