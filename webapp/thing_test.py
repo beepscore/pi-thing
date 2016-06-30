@@ -16,6 +16,6 @@ print('Switch: {0}'.format(switch))
 print('Blinking LED (Ctrl-C to stop)...')
 while True:
     pi_thing.set_led(True)
-    time.sleep(0.5)
+    time.sleep(0.1)
     pi_thing.set_led(False)
-    time.sleep(0.5)
+    time.sleep(0.9)
