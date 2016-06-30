@@ -86,27 +86,35 @@ Tried to create virtual environment on pi.
     pyvenv venv
 
 pyvenv command not found
+venv wasn't working. To start over, I deleted directory venv
+http://stackoverflow.com/questions/31252791/flask-importerror-no-module-named-flask?lq=1
 
 #### install python3-venv
 https://www.raspberrypi.org/forums/viewtopic.php?f=32&t=129797
 
     sudo apt-get install python3-venv
-    pyvenv venv
+
+    python3 -m venv venv
     source ./venv/bin/activate
-    (venv) pi@pika:~/beepscore/pi-thing $
+    (venv) pi@pika:~/beepscore/pi_thing $ which python3
+    /home/pi/beepscore/pi_thing/venv/bin/python3
 
-#### install flask
+==> venv is working!
 
-    pip install flask
+#### install packages
+
+    pip3 install flask
+    pip3 install RPi.GPIO
 
 #### start flask server
 
     cd webapp
-    python main.py
+    python3 main.py
 
 On raspberry pi desktop browser go to url http://0.0.0.0:5000/
 Pi can see "Hello World"
 
 Fing.app shows pi wifi address is http://10.0.0.19
+
 On macos browser go to url http://10.0.0.19:5000/
 mac can see "Hello World"
