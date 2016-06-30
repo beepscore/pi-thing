@@ -118,3 +118,15 @@ Fing.app shows pi wifi address is http://10.0.0.19
 
 On macos browser go to url http://10.0.0.19:5000/
 mac can see "Hello World"
+
+#### stop flask server
+ctrl-c
+
+#### safely shutdown raspberry pi
+avoid corrupting SD card
+
+    sudo halt
+
+to reboot
+
+    sudo reboot
