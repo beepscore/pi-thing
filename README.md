@@ -70,6 +70,7 @@ This installed flask to venv, ignored by git.
 
 #### start flask server
 
+    source ./venv/bin/activate
     cd webapp
     python main.py
 
