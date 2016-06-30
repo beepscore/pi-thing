@@ -2,7 +2,14 @@
 
 # import * to get render_template
 from flask import *
+
+from thing import PiThing
+
+# instantiate flask app
 app = Flask(__name__)
+
+# instantiate pi_thing as a global variable
+pi_thing = PiThing()
 
 # default route raspberry pi /
 @app.route("/")
