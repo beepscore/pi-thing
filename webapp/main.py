@@ -17,6 +17,9 @@ def hello():
     # get current switch value
     switch_value = pi_thing.read_switch()
     # render index.html, passing in switch_value
+    # user must manually refresh browser, make new get request to see any changes to web page.
+    # app is using request/response.
+    # Later can change to websocket and javascript that runs in browser.
     return render_template('index.html', switch=switch_value)
 
 @app.route("/foo")
