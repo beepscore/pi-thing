@@ -28,13 +28,35 @@ https://html5boilerplate.com/
 
 ## RPi.GPIO
 https://pypi.python.org/pypi/RPi.GPIO
+### pin numbering
+set to BCM to match pi cobbler
+https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/
 
 ## Equipment
 
 ### Raspberry Pi 2 - Model B - ARMv7 with 1G RAM
 http://www.adafruit.com/products/2358
 
+### Pi Cobbler +
+https://www.adafruit.com/products/2029
+Uses BCM numbering, not board numbering
+https://www.raspberrypi.org/forums/viewtopic.php?t=103382
+
+### led (long leg is anode +, short leg on flat side is cathode -
+### Resistor 1 kohm
+### switch spdt
+
 # Results
+
+## Raspberry Pi inputs/outputs
+Pin numbers match Pi Cobbler
+### output LED + resistor
+BCM pin 23 -> LED anode -> LED cathode -> 560 ohm resistor -> ground
+
+### input slide switch
+pin 24 -> pole (middle leg)
+one throw 3.3V
+one throw gnd
 
 ## Flask
 
