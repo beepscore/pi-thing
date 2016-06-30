@@ -8,10 +8,10 @@ SWITCH_PIN = 24
 # new style class
 class PiThing(object):
     """Raspberry Pi Internet 'Thing'."""
-    
-    def __init__(self):
-        # use BCM numbering scheme when using Adafruit pi cobbler. Don't use board scheme.
 
+    def __init__(self):
+
+        # Match Adafruit pi cobbler numbering BCM, don't use GPIO.BOARD.
         GPIO.setmode(GPIO.BCM)
 
         # led as output
