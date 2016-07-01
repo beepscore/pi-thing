@@ -22,6 +22,12 @@ def hello():
     # Later can change to websocket and javascript that runs in browser.
     return render_template('index.html', switch=switch_value)
 
+# use url last component to pass argument led_state to the server
+# name of defined function doesn't matter
+@app.route("/led/<int:led_state>")
+def led(led_state):
+    return 'hello {0}'.format(led_state)
+
 @app.route("/foo")
 def achoo():
     return "Achoo Foo!"
