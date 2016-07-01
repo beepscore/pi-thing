@@ -136,4 +136,7 @@ to reboot
 empty data
 curl --data '' http://10.0.0.19:5000/led/1
 
-#### postman
+#### Postman
+http://10.0.0.19:5000/led/1
+body form-data key:data value:''
+
