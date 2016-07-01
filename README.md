@@ -130,3 +130,10 @@ avoid corrupting SD card
 to reboot
 
     sudo reboot
+
+### POST request
+#### curl
+empty data
+curl --data '' http://10.0.0.19:5000/led/1
+
+#### postman
