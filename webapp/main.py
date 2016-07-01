@@ -13,7 +13,7 @@ pi_thing = PiThing()
 
 # default route raspberry pi /
 @app.route("/")
-def hello():
+def index():
     # get current switch value
     switch_value = pi_thing.read_switch()
     # render index.html, passing in switch_value
