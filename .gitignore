@@ -25,6 +25,7 @@ downloads/
 eggs/
 .eggs/
 lib/
+!/webapp/static/lib/
 lib64/
 parts/
 sdist/
