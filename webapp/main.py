@@ -5,6 +5,10 @@ from flask import *
 
 from thing import PiThing
 
+"""main.py uses Flask web server for network communications
+and PiThing to read and write to raspberry pi gpio pins.
+"""
+
 # instantiate flask app
 app = Flask(__name__)
 

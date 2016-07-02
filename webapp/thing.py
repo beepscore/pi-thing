@@ -7,7 +7,10 @@ SWITCH_PIN = 24
 
 # new style class
 class PiThing(object):
-    """Raspberry Pi Internet 'Thing'."""
+    """Raspberry Pi Internet 'Thing'.
+    PiThing reads and writes to raspberry pi gpio pins.
+    It does not contain any networking code, and may be used and tested without a network.
+    """
 
     def __init__(self):
 
