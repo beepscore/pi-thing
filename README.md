@@ -64,24 +64,6 @@ one throw gnd
 
 ## Flask
 
-### macos
-On macos, with virtual environment active, ran
-
-    pip install flask.
-    pip install --upgrade pip
-
-This installed flask to venv, ignored by git.
-
-#### start flask server
-
-    source ./venv/bin/activate
-    cd webapp
-    python main.py
-
-On macos browser go to url http://0.0.0.0:5000/ or http://10.0.0.11:5000/
-mac can see "Hello World"
-url http://0.0.0.0:5000/foo shows "Achoo Foo!"
-
 ### raspberry pi
 Cloned repo beepscore/pi-thing, pulled latest changes.
 
@@ -112,16 +94,37 @@ https://www.raspberrypi.org/forums/viewtopic.php?f=32&t=129797
 
 #### start flask server
 
-    cd webapp
-    python3 main.py
+    cd <project root directory>
+    source ./venv/bin/activate
+    python3 webapp/main.py
 
-On raspberry pi desktop browser go to url http://0.0.0.0:5000/
-Pi can see "Hello World"
+If main.py starts with
 
+    #!/usr/bin/env python3
+
+can start via
+
+    cd <project root directory>
+    source ./venv/bin/activate
+    webapp/main.py
+
+#### browser
+
+##### url
+
+###### rpi desktop
+url http://0.0.0.0:5000/
+
+###### local network
+Can use browswer on any machine on local network
 Fing.app shows pi wifi address is http://10.0.0.19
 
-On macos browser go to url http://10.0.0.19:5000/
-mac can see "Hello World"
+##### server response
+http://10.0.0.19:5000/  
+Returns rendered index.html "Hello World"
+
+http://0.0.0.0:5000/foo  
+Returns "Achoo Foo!"
 
 #### stop flask server
 ctrl-c
@@ -166,3 +169,36 @@ led() uses pi_thing to set led state
 Raspbian Jessie includes systemd, can be used to start a service  
 to run a web server running when pi boots.
 #### How to activate virtual environment before running main.py?
+
+# Appendix - Running flask on macos
+mac can run earliest version of webapp without RPi.GPIO.  
+
+## install
+On macos, with virtual environment active, ran
+
+    pip install flask.
+    pip install --upgrade pip
+
+This installed flask to venv, ignored by git.
+
+## start flask server
+
+    cd <project root directory>
+    source ./venv/bin/activate
+    python3 webapp/main.py
+
+If main.py starts with
+
+    #!/usr/bin/env python3
+
+can start via
+
+    webapp/main.py
+
+## browser
+When macos is running flask, on mac browser go to url
+
+    http://0.0.0.0:5000/
+or
+    http://10.0.0.11:5000/
+
