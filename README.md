@@ -32,6 +32,10 @@ https://pypi.python.org/pypi/RPi.GPIO
 set to BCM to match pi cobbler
 https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/
 
+## systemd
+systemd: Writing and Enabling a Service
+https://learn.adafruit.com/running-programs-automatically-on-your-tiny-computer/systemd-writing-and-enabling-a-service
+
 ## Equipment
 
 ### Raspberry Pi 2 - Model B - ARMv7 with 1G RAM
@@ -157,3 +161,8 @@ and sends a POST request to server /led to turn led on or off.
 flask app main.py routes request to matching @app.route "/led/<int:led_state>".  
 The function name under the  does not matter, but here it is led().  
 led() uses pi_thing to set led state  
+
+### systemd
+Raspbian Jessie includes systemd, can be used to start a service  
+to run a web server running when pi boots.
+#### How to activate virtual environment before running main.py?
