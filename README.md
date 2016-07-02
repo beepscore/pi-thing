@@ -140,3 +140,20 @@ curl --data '' http://10.0.0.19:5000/led/1
 http://10.0.0.19:5000/led/1
 body form-data key:data value:''
 
+### How app works
+Developer runs main.py to start flask app and instantiate pi_thing.  
+User uses browser to make a GET request to app root url http://10.0.0.19:5000/  
+flask app main.py routes request to method index()  
+flask app main.py routes request to matching @app.route "/".  
+The function name under the  does not matter, but here it is index().  
+index() uses pi_thing to read switch state  
+index() renders template/index.html using switch value.  
+flask app responds to GET request by sending rendered index.html
+Rendered index.html includes buttons with ids, and javascript from source thing.js
+javascript has jquery onclick listeners for buttons.
+If user clicks a button in browser, click listener logs the click  
+and sends a POST request to server /led to turn led on or off.  
+
+flask app main.py routes request to matching @app.route "/led/<int:led_state>".  
+The function name under the  does not matter, but here it is led().  
+led() uses pi_thing to set led state  
