@@ -24,11 +24,18 @@
             </div>
         </div>
 
-        <h3>Switch: {{ 'On' if switch else 'Off' }}</h3>
-        <p>
-        <button type='button' id='led_on'>LED ON</button>
-        <button type='button' id='led_off'>LED OFF</button>
-        </p>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Switch: <span id='switch_value' class="label"></span></h3>
+            </div>
+            <div class="col-md-4">
+              <h3>LED</h3>
+              <button class="btn btn-default" type='button' id='led_on'>LED ON</button>
+              <button class="btn btn-default" type='button' id='led_off'>LED OFF</button>
+            </div>
+          </div>
+        </div>
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>') async</script>
