@@ -36,6 +36,15 @@ https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/
 systemd: Writing and Enabling a Service
 https://learn.adafruit.com/running-programs-automatically-on-your-tiny-computer/systemd-writing-and-enabling-a-service
 
+## Stream Updates with Server-Sent Events
+http://www.html5rocks.com/en/tutorials/eventsource/basics/
+
+## Websockets
+http://www.html5rocks.com/en/tutorials/#websockets
+
+## Introduction to Service Worker
+http://www.html5rocks.com/en/tutorials/service-worker/introduction/
+
 ## Equipment
 
 ### Raspberry Pi 2 - Model B - ARMv7 with 1G RAM
