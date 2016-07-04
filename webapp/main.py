@@ -3,6 +3,9 @@
 # import * to get render_template
 from flask import *
 
+import random
+import time
+
 from thing import PiThing
 
 """main.py uses Flask web server for network communications
@@ -38,6 +41,17 @@ def led(led_state):
         # http status code 400 bad request error
         return ('Unknown LED state!', 400)
     return ('', 204)
+
+@app.route("/switch")
+def switch():
+    # http://flask.pocoo.org/docs/0.11/patterns/streaming/
+    def get_switch_values():
+        while True:
+            # server sent event specifies format:
+            # data: <value>\n\n
+            # http://www.html5rocks.com/en/tutorials/eventsource/basics/
+            yield('data: {0}\n\n'.format(random.randrange(0,100)))
+    return Response(get_switch_values(), mimetype='text/event-stream')
 
 @app.route("/foo")
 def achoo():

@@ -38,9 +38,12 @@ https://learn.adafruit.com/running-programs-automatically-on-your-tiny-computer/
 
 ## Stream Updates with Server-Sent Events
 http://www.html5rocks.com/en/tutorials/eventsource/basics/
+Enables server to continually push to client.
+Client does not have to poll server.
 
 ## Websockets
 http://www.html5rocks.com/en/tutorials/#websockets
+Enables bidirectional open connection between server and client.
 
 ## Introduction to Service Worker
 http://www.html5rocks.com/en/tutorials/service-worker/introduction/
