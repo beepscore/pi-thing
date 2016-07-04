@@ -26,5 +26,7 @@ switchSource.onmessage = function(switchEvent) {
     // Chrome / View / Developer / JavaScript console works
     // now either one works! May be because filter default was not "all"
     // http://stackoverflow.com/questions/18760213/chrome-console-log-console-debug-are-not-working
-    console.log(switchEvent.data);
+    // console.log(switchEvent.data);
+    // find html element with id switch_value and set text
+    $('#switch_value').text(switchEvent.data);
 }
