@@ -129,7 +129,16 @@ url http://0.0.0.0:5000/
 
 ###### local network
 Can use browswer on any machine on local network
-Fing.app shows pi wifi address is http://10.0.0.19
+Fing.app shows pi wifi address
+
+####### USB wifi adapter, body length ~ 6 mm
+
+    http://10.0.0.19
+
+####### USB wifi adapter "OURLINK", body length ~ 30 mm
+Use adapter with larger antenna to attempt to reduce disconnect errors e.g. 'broken pipe'
+
+    http://10.0.0.20
 
 ##### server response
 http://10.0.0.19:5000/  
