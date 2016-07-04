@@ -51,6 +51,7 @@ def switch():
             # data: <value>\n\n
             # http://www.html5rocks.com/en/tutorials/eventsource/basics/
             yield('data: {0}\n\n'.format(random.randrange(0,100)))
+            time.sleep(1.0)
     return Response(get_switch_values(), mimetype='text/event-stream')
 
 @app.route("/foo")
