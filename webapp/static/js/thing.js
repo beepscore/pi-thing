@@ -21,5 +21,10 @@ var switchSource = new EventSource("/switch");
 //var switchSource = new EventSource("{{ url_for( 'switch') }}");
 
 switchSource.onmessage = function(switchEvent) {
-  console.log(switchEvent.data);
+    // event data shows on web page but at first I couldn't see it in console log
+    // Chrome / View / Developer / Developer tools / console log didn't work
+    // Chrome / View / Developer / JavaScript console works
+    // now either one works! May be because filter default was not "all"
+    // http://stackoverflow.com/questions/18760213/chrome-console-log-console-debug-are-not-working
+    console.log(switchEvent.data);
 }
