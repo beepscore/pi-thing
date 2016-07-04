@@ -64,4 +64,7 @@ def achoo():
 if __name__ == "__main__":
     # listen for connections from any machine on network
     # in browser enter url http://0.0.0.0:5000/
-    app.run(host='0.0.0.0', debug=True)
+    # set threaed true so flask can use multiple threads
+    # this keeps /switch infinite loop "while True" from hogging all execution time
+    # also enables app to handle multiple requests
+    app.run(host='0.0.0.0', debug=True, threaded=True)
