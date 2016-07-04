@@ -14,11 +14,10 @@ $(document).ready(function() {
 
 // Setup server sent event endpoint for /switch
 // https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
-var switchSource = new EventSource("/switch");
 
-// alternatively, could use flask url_for to get endpoint for function
-// does this work when javascript source file is not in python template?
-//var switchSource = new EventSource("{{ url_for( 'switch') }}");
+// var switchSource = new EventSource("/switch");
+// use flask url_for to get endpoint for function
+var switchSource = new EventSource("{{ url_for( 'switch') }}");
 
 switchSource.onmessage = function(switchEvent) {
     // event data shows on web page but at first I couldn't see it in console log
