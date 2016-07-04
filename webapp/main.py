@@ -24,9 +24,6 @@ def index():
     # get current switch value
     switch_value = pi_thing.read_switch()
     # render index.html, passing in switch_value
-    # user must manually refresh browser, make new get request to see any changes to web page.
-    # app is using request/response.
-    # Later can change to websocket and javascript that runs in browser.
     return render_template('index.html', switch=switch_value)
 
 # use url last component to pass argument led_state to the server
@@ -50,10 +47,14 @@ def switch():
     # http://flask.pocoo.org/docs/0.11/patterns/streaming/
     def get_switch_values():
         while True:
+            # get current switch value 0 or 1
+            switch_value = pi_thing.read_switch()
+
             # server sent event specifies format:
             # data: <value>\n\n
             # http://www.html5rocks.com/en/tutorials/eventsource/basics/
-            yield('data: {0}\n\n'.format(random.randrange(0,100)))
+            yield('data: {0}\n\n'.format(switch_value))
+
             time.sleep(1.0)
     return Response(get_switch_values(), mimetype='text/event-stream')
 
