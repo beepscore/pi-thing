@@ -42,6 +42,9 @@ def led(led_state):
         return ('Unknown LED state!', 400)
     return ('', 204)
 
+# endpoint /switch
+# Firefox asks if want to save or open with a program
+# Chrome works
 @app.route("/switch")
 def switch():
     # http://flask.pocoo.org/docs/0.11/patterns/streaming/
