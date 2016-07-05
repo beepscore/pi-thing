@@ -21,12 +21,12 @@ $(document).ready(function() {
 var switchSource = new EventSource("/switch");
 
 function updateSwitch(switchValue) {
-    console.log('switchValue: ' + switchValue);
     if (switchValue === '0') {
         $('#switch_value').text('Off');
     } else if (switchValue === '1') {
         $('#switch_value').text('On');
     }
+}
 
 switchSource.onmessage = function(switchEvent) {
     // event data shows on web page but at first I couldn't see it in console log
