@@ -197,7 +197,7 @@ mac can run earliest version of webapp without RPi.GPIO.
 ## install
 On macos, with virtual environment active, ran
 
-    pip install flask.
+    pip install flask
     pip install --upgrade pip
 
 This installed flask to venv, ignored by git.
