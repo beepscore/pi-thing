@@ -74,6 +74,12 @@ pin 24 -> pole (middle leg)
 one throw 3.3V
 one throw gnd
 
+## ssh
+Connect to rpi via ssh, either by ethernet cable + sharing/internet sharing or via wifi.
+Note: If flask app encounters an error, flask server may stop.
+In addition, pi may disconnect from ssh session with mac, even if using ethernet!
+I don't know why this happens.
+
 ## Flask
 
 ### raspberry pi
@@ -136,7 +142,7 @@ Fing.app shows pi wifi address
     http://10.0.0.19
 
 ####### USB wifi adapter "OURLINK", body length ~ 30 mm
-Use adapter with larger antenna to attempt to reduce disconnect errors e.g. 'broken pipe'
+Use adapter with larger antenna to attempt to reduce disconnect errors e.g. 'broken pipe'.
 
     http://10.0.0.20
 
