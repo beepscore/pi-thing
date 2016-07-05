@@ -63,10 +63,10 @@ def achoo():
     return "Achoo Foo!"
 
 if __name__ == "__main__":
-    # listen for connections from any machine on network
-    # in browser enter url http://0.0.0.0:5000/
-    # set threaed true so flask can use multiple threads
-    # this keeps /switch infinite loop "while True" from hogging all execution time
-    # also enables app to handle multiple requests
-    # app.run(host='0.0.0.0', debug=True)
+    # Listen for connections from any machine on network
+    # In browser enter url http://0.0.0.0:5000/
+    # Set threaded true so flask can use multiple threads.
+    # Without threading, /switch infinite loop "while True" can hog all execution time,
+    # starving led code from running.
+    # Multiple threads also enable app to handle multiple requests.
     app.run(host='0.0.0.0', debug=True, threaded=True)
