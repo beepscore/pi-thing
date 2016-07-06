@@ -8,8 +8,14 @@ Record info about making a Raspberry Pi "Thing" for internet of Things.
 ## Adafrut tutorial
 
 ### video
+#### Part 1 use request/response, led and switch
 Raspberry Pi & Python Internet 'Thing' pt. 1 with Tony D! @adafruit #LIVE
 https://www.youtube.com
+#### Part 2 use server sent events
+#### Part 3 use digital humidity temperature sensor and chart.js
+https://www.youtube.com/watch?v=oeGI5OMAheg
+#### Part 4 use web socket via socketIO
+https://www.youtube.com/watch?v=cAymVFeoz3s
 
 ### github repository
 https://github.com/adafruit/Pi_Internet_Thing_Videos
@@ -61,6 +67,10 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=103382
 ### led (long leg is anode +, short leg on flat side is cathode -
 ### Resistor 1 kohm
 ### switch spdt
+
+### digital humidity temperature (DHT) sensor
+Uses timing to read, not i2c or spi.  
+https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview
 
 # Results
 
@@ -157,7 +167,7 @@ Returns "Achoo Foo!"
 
     ctrl-c
 
-Note: when flask debug server is connected to a browser via server sent event,
+Note: when flask debug server is connected to a browser via server sent events,
 ctrl-c will not completely stop server until browser is closed or process is killed.
 
 Can see this in terminal by running process status and filtering for python
