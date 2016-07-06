@@ -154,7 +154,11 @@ http://0.0.0.0:5000/foo
 Returns "Achoo Foo!"
 
 #### stop flask server
-ctrl-c
+
+    ctrl-c
+
+Note when flask server is connected to a browser via server sent event,
+ctrl-c will not completely stop server until browser is closed too.
 
 #### safely shutdown raspberry pi
 avoid corrupting SD card
