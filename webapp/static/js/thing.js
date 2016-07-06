@@ -22,9 +22,14 @@ var switchSource = new EventSource("/switch");
 
 function updateSwitch(switchValue) {
     if (switchValue === '0') {
+        // element with id switch_value
         $('#switch_value').text('Off');
+        $('#switch_value').toggleClass('label-danger', false);
+        $('#switch_value').toggleClass('label-default', true);
     } else if (switchValue === '1') {
         $('#switch_value').text('On');
+        $('#switch_value').toggleClass('label-danger', true);
+        $('#switch_value').toggleClass('label-default', false);
     }
 }
 
