@@ -157,8 +157,19 @@ Returns "Achoo Foo!"
 
     ctrl-c
 
-Note when flask server is connected to a browser via server sent event,
+Note: when flask debug server is connected to a browser via server sent event,
 ctrl-c will not completely stop server until browser is closed too.
+
+Can see this in terminal by running process status and filtering for python
+
+    ps aux | grep python
+
+Shows main.py
+Close browser and re-run
+
+    ps aux | grep python
+
+doesn't show main.py
 
 #### safely shutdown raspberry pi
 avoid corrupting SD card
