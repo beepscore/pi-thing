@@ -316,3 +316,9 @@ Try python3, not python
     Processing dependencies for Adafruit-DHT==1.3.0
     Finished processing dependencies for Adafruit-DHT==1.3.0
 
+This installed DHT library to project venv as desired.
+
+    pi_thing/venv/lib/python3.4/site-packages/Adafruit_DHT-1.3.0-py3.4-linux-armv7l.egg
+
+Note RPi.GPIO is also installed to pi_thing/venv/lib/python3.4/site-packages
+
