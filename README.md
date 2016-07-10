@@ -322,3 +322,34 @@ This installed DHT library to project venv as desired.
 
 Note RPi.GPIO is also installed to pi_thing/venv/lib/python3.4/site-packages
 
+## install python-smbus as shown on video, not shown on web site
+Maybe don't need this anymore?
+
+    sudo apt-get install python-dev python-smbus
+
+## Check install
+Use library simpletest.py to check we can use library and sensor.  
+Whenever adding a sensor, best practice check sensor and library work before adding more project code.  
+
+### git branch
+Outside project directory pi_thing, in sibling directory Adafruit_Python_DHT, make a new branch.  
+
+    git branch beepscore
+
+### edit Adafruit_Python_DHT/examples/simpletest.py
+
+#### change sensor
+  27 # sensor = Adafruit_DHT.DHT22
++  28 sensor = Adafruit_DHT.AM2302
+
+#### comment out beaglebone, set to raspberry pi pin 18
+   30 # Example using a Beaglebone Black with DHT sensor
+   31 # connected to pin P8_11.
+!  32 # pin = 'P8_11'
+   33
+   34 # Example using a Raspberry Pi with DHT sensor
+   35 # connected to GPIO23.
+   36 #pin = 23
++  37 pin = 18
+
+#### git commit changes
