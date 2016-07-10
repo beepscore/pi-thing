@@ -69,8 +69,11 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=103382
 ### switch spdt
 
 ### digital humidity temperature (DHT) sensor
+AM2302 (wired DHT22)  
+https://www.adafruit.com/products/393  
 Uses timing to read, not i2c or spi.  
-https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview
+https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview  
+https://github.com/adafruit/Adafruit_Python_DHT
 
 # Results
 
