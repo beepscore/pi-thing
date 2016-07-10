@@ -35,17 +35,17 @@ https://html5boilerplate.com/
 ## RPi.GPIO
 https://pypi.python.org/pypi/RPi.GPIO
 ### pin numbering
-set to BCM to match pi cobbler
+set to BCM to match pi cobbler  
 https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/
 
 ## systemd
-systemd: Writing and Enabling a Service
+systemd: Writing and Enabling a Service  
 https://learn.adafruit.com/running-programs-automatically-on-your-tiny-computer/systemd-writing-and-enabling-a-service
 
 ## Stream Updates with Server-Sent Events
 http://www.html5rocks.com/en/tutorials/eventsource/basics/
-Enables server to continually push to client.
-Client does not have to poll server.
+Enables server to continually push to client.  
+Client does not have to poll server.  
 
 ## Websockets
 http://www.html5rocks.com/en/tutorials/#websockets
@@ -61,8 +61,8 @@ http://www.adafruit.com/products/2358
 
 ### Pi Cobbler +
 https://www.adafruit.com/products/2029
-Uses BCM numbering, not board numbering
-https://www.raspberrypi.org/forums/viewtopic.php?t=103382
+Uses BCM numbering, not board numbering  
+https://www.raspberrypi.org/forums/viewtopic.php?t=103382  
 
 ### led (long leg is anode +, short leg on flat side is cathode -
 ### Resistor 1 kohm
