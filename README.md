@@ -258,3 +258,61 @@ When macos is running flask, on mac browser go to url
 or
     http://10.0.0.11:5000/
 
+# Appendix - Install DHT library
+In pi_thing, activated venv.  
+
+As described at https://github.com/adafruit/Adafruit_Python_DHT
+
+    sudo apt-get update
+    sudo apt-get install build-essential python-dev
+
+On pi, cd out of project directory pi_thing to parent directory.
+
+    git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+
+## cd to pi_thing, activate venv, and run setup.py
+    pi@pika:~/beepscore $ cd pi_thing
+    pi@pika:~/beepscore/pi_thing $ source venv/bin/activate
+
+Try python3, not python
+
+    (venv) pi@pika:~/beepscore/pi_thing $ python3 ../Adafruit_Python_DHT/setup.py install
+
+### this failed as shown below
+    running install
+    running bdist_egg
+    running egg_info
+    creating Adafruit_DHT.egg-info
+    writing top-level names to Adafruit_DHT.egg-info/top_level.txt
+    writing Adafruit_DHT.egg-info/PKG-INFO
+    writing dependency_links to Adafruit_DHT.egg-info/dependency_links.txt
+    writing manifest file 'Adafruit_DHT.egg-info/SOURCES.txt'
+    warning: manifest_maker: standard file 'setup.py' not found
+
+    reading manifest file 'Adafruit_DHT.egg-info/SOURCES.txt'
+    writing manifest file 'Adafruit_DHT.egg-info/SOURCES.txt'
+    installing library code to build/bdist.linux-armv7l/egg
+    running install_lib
+    running build_ext
+    building 'Adafruit_DHT.Raspberry_Pi_2_Driver' extension
+    creating build
+    creating build/temp.linux-armv7l-3.4
+    creating build/temp.linux-armv7l-3.4/source
+    creating build/temp.linux-armv7l-3.4/source/Raspberry_Pi_2
+    arm-linux-gnueabihf-gcc -pthread -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -g -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -fPIC -I/home/pi/beepscore/pi_thing/venv/include -I/usr/include/python3.4m -c source/_Raspberry_Pi_2_Driver.c -o build/temp.linux-armv7l-3.4/source/_Raspberry_Pi_2_Driver.o -std=gnu99
+    arm-linux-gnueabihf-gcc: error: source/_Raspberry_Pi_2_Driver.c: No such file or directory
+    arm-linux-gnueabihf-gcc: fatal error: no input files
+    compilation terminated.
+    error: command 'arm-linux-gnueabihf-gcc' failed with exit status 4
+
+## With pi_thing venv active, cd to Adafruit_Python_DHT and run setup.py
+    (venv) pi@pika:~/beepscore/pi_thing $ cd ..
+    (venv) pi@pika:~/beepscore $ ls
+    Adafruit_Python_DHT  pi_cam  pi_thing
+    (venv) pi@pika:~/beepscore $ cd Adafruit_Python_DHT/
+    (venv) pi@pika:~/beepscore/Adafruit_Python_DHT $ python3 setup.py install
+    ...
+    Installed /home/pi/beepscore/pi_thing/venv/lib/python3.4/site-packages/Adafruit_DHT-1.3.0-py3.4-linux-armv7l.egg
+    Processing dependencies for Adafruit-DHT==1.3.0
+    Finished processing dependencies for Adafruit-DHT==1.3.0
+
