@@ -74,6 +74,9 @@ https://www.adafruit.com/products/393
 Uses timing to read, not i2c or spi.  
 https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview  
 https://github.com/adafruit/Adafruit_Python_DHT
+3 volts - red  (AM2302 already has 4.7 kohm resistor built in)
+ground - black wire
+pin 18 - data, yellow
 
 # Results
 
@@ -258,6 +261,11 @@ When macos is running flask, on mac browser go to url
 or
     http://10.0.0.11:5000/
 
+####### pihole
+
+    http://10.0.0.17:5000/
+
+
 # Appendix - Install DHT library
 In pi_thing, activated venv.  
 
@@ -269,6 +277,10 @@ As described at https://github.com/adafruit/Adafruit_Python_DHT
 On pi, cd out of project directory pi_thing to parent directory.
 
     git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+
+Later I forked the library. On pihole I cloned fork.
+
+    git clone https://github.com/beepscore/Adafruit_Python_DHT.git
 
 ## cd to pi_thing, activate venv, and run setup.py
     pi@pika:~/beepscore $ cd pi_thing
@@ -353,3 +365,21 @@ Outside project directory pi_thing, in sibling directory Adafruit_Python_DHT, ma
 +  37 pin = 18
 
 #### git commit changes
+
+On pihole, in Adafruit_Python_DHT ran sudo python setup.py install
+This generated a binary file dist/Adafruit_DHT-1.3.0-py2.7-linux-armv7l.egg.
+On pihole committed to git.
+Then I manually generated a patch file, used Filezilla to copy to mac.
+
+##### check before apply
+cd Adafruit_Python_DHT
+git branch beepscore
+git apply --check ~/Desktop/0001-Ran-sudo-python-setup.py-install.patch
+
+git am --signoff < ~/Desktop/0001-Ran-sudo-python-setup.py-install.patch
+
+Now on pihole run an example
+
+pi@pihole:~/beepscore/Adafruit_Python_DHT/examples $ sudo ./AdafruitDHT.py 2302 18
+Temp=25.4*  Humidity=57.5%
+
