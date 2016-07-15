@@ -383,3 +383,5 @@ Now on pihole run an example
 pi@pihole:~/beepscore/Adafruit_Python_DHT/examples $ sudo ./AdafruitDHT.py 2302 18
 Temp=25.4*  Humidity=57.5%
 
+pi@pihole:~/beepscore/Adafruit_Python_DHT/examples $ python simpletest.py
+Temp=24.9*C  Humidity=83.0%
