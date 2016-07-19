@@ -378,10 +378,16 @@ git apply --check ~/Desktop/0001-Ran-sudo-python-setup.py-install.patch
 
 git am --signoff < ~/Desktop/0001-Ran-sudo-python-setup.py-install.patch
 
-Now on pihole run an example
+## On pihole run examples
 
+### AdafruitDHT.py
 pi@pihole:~/beepscore/Adafruit_Python_DHT/examples $ sudo ./AdafruitDHT.py 2302 18
 Temp=25.4*  Humidity=57.5%
 
+### simpletest.py
 pi@pihole:~/beepscore/Adafruit_Python_DHT/examples $ python simpletest.py
 Temp=24.9*C  Humidity=83.0%
+
+### thing_test.py
+source venv/bin/activate
+(venv) pi@pihole:~/beepscore/pi_thing $ python3 webapp/thing_test.py

@@ -22,5 +22,5 @@ while True:
 
     humidity = pi_thing.get_humidity()
     temperature = pi_thing.get_temperature()
-    print('Temp: {0:0.2F} Humidity: {1:0.2F}'.format(temperature, humidity))
+    print('TemperatureDegreesC: {0:0.2F} Humidity: {1:0.2F}'.format(temperature, humidity))
 

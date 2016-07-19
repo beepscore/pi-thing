@@ -32,7 +32,7 @@ class PiThing(object):
         self._lock = threading.Lock()
 
     def get_humidity(self):
-        """returns humidity as a percentage 0 - 100
+        """returns humidity as a percentage 0 - 100. Sensor updates every 2 seconds.
         """
         # 'with' is a context, lock makes method thread safe.
         with self._lock:
@@ -40,7 +40,7 @@ class PiThing(object):
             return humidity
 
     def get_temperature(self):
-        """returns temperature in degrees Celsius
+        """returns temperature in degrees Celsius. Sensor updates every 2 seconds.
         """
         # 'with' is a context, lock makes method thread safe.
         with self._lock:
