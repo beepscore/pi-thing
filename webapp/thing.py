@@ -52,19 +52,24 @@ class PiThing(object):
 
     def get_humidity(self):
         """returns humidity as a percentage 0 - 100. Sensor updates every 2 seconds.
+        Uses lock for thread safety, e.g. avoid race condition 
+        if background thread tries to write to _humidity at the same time we try to read it.
         """
-        return self._humidity
+        # 'with' is a context, lock makes method thread safe.
+        with self._lock:
+            return self._humidity
 
     def get_temperature(self):
         """returns temperature in degrees Celsius. Sensor updates every 2 seconds.
+        Uses lock for thread safety.
         """
-        return self._temperature
+        with self._lock:
+            return self._temperature
 
     def read_switch(self):
         """returns true if switch is high, false if switch is low.
         Uses lock for thread safety.
         """
-        # 'with' is a context, lock makes method thread safe.
         with self._lock:
             return GPIO.input(SWITCH_PIN)
 
