@@ -31,21 +31,34 @@ class PiThing(object):
         # Some Python developers follow this naming convention.
         self._lock = threading.Lock()
 
+        # humidity as a percentage 0 - 100
+        self._humidity = None
+        # temperature in degrees Celsius
+        self._temperature = None
+        # Create and start background thread for humidity/temperature
+        self._dht_thread = threading.Thread(target=self._dht_update)
+        self._dht_thread.daemon = True
+        self._dht_thread.start()
+
+    def _dht_update(self):
+        """Main function for DHT update thread.
+        Make thread safe to avoid problems with multiple requests to one sensor.
+        """
+        print("dht thread starting.")
+        while True:
+            self._humidity, self._temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
+            # sensor updates every 2 seconds, so read at same frequency
+            time.sleep(2.0)
+
     def get_humidity(self):
         """returns humidity as a percentage 0 - 100. Sensor updates every 2 seconds.
         """
-        # 'with' is a context, lock makes method thread safe.
-        with self._lock:
-            humidity, temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
-            return humidity
+        return self._humidity
 
     def get_temperature(self):
         """returns temperature in degrees Celsius. Sensor updates every 2 seconds.
         """
-        # 'with' is a context, lock makes method thread safe.
-        with self._lock:
-            humidity, temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
-            return temperature
+        return self._temperature
 
     def read_switch(self):
         """returns true if switch is high, false if switch is low.
