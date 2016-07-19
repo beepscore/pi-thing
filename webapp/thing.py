@@ -3,6 +3,7 @@
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 import threading
+import time
 
 # humidity/temperature sensor
 DHT_TYPE = Adafruit_DHT.AM2302
