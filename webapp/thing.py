@@ -1,7 +1,12 @@
 #!/usr/bin/env python
 
+import Adafruit_DHT
 import RPi.GPIO as GPIO
 import threading
+
+# humidity/temperature sensor
+DHT_TYPE = Adafruit_DHT.AM2302
+DHT_PIN = 18
 
 LED_PIN = 23
 SWITCH_PIN = 24
@@ -26,6 +31,22 @@ class PiThing(object):
         # Some Python developers follow this naming convention.
         self._lock = threading.Lock()
 
+    def get_humidity(self):
+        """returns humidity as a percentage 0 - 100
+        """
+        # 'with' is a context, lock makes method thread safe.
+        with self._lock:
+            humidity, temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
+            return humidity
+
+    def get_temperature(self):
+        """returns temperature in degrees Celsius
+        """
+        # 'with' is a context, lock makes method thread safe.
+        with self._lock:
+            humidity, temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
+            return temperature
+
     def read_switch(self):
         """returns true if switch is high, false if switch is low.
         Uses lock for thread safety.
@@ -33,7 +54,6 @@ class PiThing(object):
         # 'with' is a context, lock makes method thread safe.
         with self._lock:
             return GPIO.input(SWITCH_PIN)
-
 
     def set_led(self, value):
         """Set the LED to the passed in value, True for on, False for off.
