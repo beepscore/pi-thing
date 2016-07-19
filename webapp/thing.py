@@ -43,17 +43,18 @@ class PiThing(object):
 
     def _dht_update(self):
         """Main function for DHT update thread.
-        Make thread safe to avoid problems with multiple requests to one sensor.
+        Make thread safe to avoid problems with multiple concurrent requests to one sensor.
+        Uses lock for thread safety, e.g. avoid race condition 
+        if user tries to read _humidity while this method is trying to write it.
         """
         while True:
-            self._humidity, self._temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
+            with self._lock:
+                self._humidity, self._temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
             # sensor updates every 2 seconds, so read at same frequency
             time.sleep(2.0)
 
     def get_humidity(self):
         """returns humidity as a percentage 0 - 100. Sensor updates every 2 seconds.
-        Uses lock for thread safety, e.g. avoid race condition 
-        if background thread tries to write to _humidity at the same time we try to read it.
         """
         # 'with' is a context, lock makes method thread safe.
         with self._lock:
