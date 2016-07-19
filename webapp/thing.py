@@ -45,7 +45,6 @@ class PiThing(object):
         """Main function for DHT update thread.
         Make thread safe to avoid problems with multiple requests to one sensor.
         """
-        print("dht thread starting.")
         while True:
             self._humidity, self._temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
             # sensor updates every 2 seconds, so read at same frequency
