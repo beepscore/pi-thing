@@ -68,7 +68,7 @@ class PiThing(object):
             return self._temperature
 
     def read_switch(self):
-        """returns true if switch is high, false if switch is low.
+        """returns 1 if switch is high, 0 if switch is low.
         Uses lock for thread safety.
         """
         with self._lock:
