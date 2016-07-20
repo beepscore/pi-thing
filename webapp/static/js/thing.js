@@ -16,9 +16,9 @@ $(document).ready(function() {
 // https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
 
 // When javascript source file is not in python template, I think can't use flask url_for
-//var thingSource = new EventSource("{{ url_for( 'switch') }}");
+//var thingSource = new EventSource("{{ url_for('thing') }}");
 // use url literal
-var thingSource = new EventSource("/switch");
+var thingSource = new EventSource("/thing");
 
 function updateSwitch(switchValue) {
     if (switchValue === 0) {
