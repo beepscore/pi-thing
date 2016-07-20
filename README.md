@@ -388,6 +388,26 @@ Temp=25.4*  Humidity=57.5%
 pi@pihole:~/beepscore/Adafruit_Python_DHT/examples $ python simpletest.py
 Temp=24.9*C  Humidity=83.0%
 
+## Changed endpoint /switch to /thing
+video  Raspberry Pi & Python Internet 'Thing' Pt. 3 with Tony D! @adafruit
+0:00 - 1:05
+
 ### thing_test.py
-source venv/bin/activate
-(venv) pi@pihole:~/beepscore/pi_thing $ python3 webapp/thing_test.py
+    source venv/bin/activate
+    (venv) pi@pihole:~/beepscore/pi_thing $ python3 webapp/thing_test.py
+
+### pihole couldn't see flask
+re-ran venv setup, that fixed problem
+
+    source venv/bin/activate
+
+video suggests run as sudo, but seems to be working without that
+
+    python3 webapp/main.py
+
+In brower entered 10.0.0.17:5000
+
+tools/web developer/web console shows output stream
+
+    data: {"humidity": 56.599998474121094, "switch": 0, "temperature": 24.100000381469727}
+    data: {"humidity": 56.599998474121094, "switch": 0, "temperature": 24.100000381469727}
