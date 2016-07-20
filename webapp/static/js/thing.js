@@ -16,30 +16,38 @@ $(document).ready(function() {
 // https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
 
 // When javascript source file is not in python template, I think can't use flask url_for
-//var switchSource = new EventSource("{{ url_for( 'switch') }}");
+//var thingSource = new EventSource("{{ url_for( 'switch') }}");
 // use url literal
-var switchSource = new EventSource("/switch");
+var thingSource = new EventSource("/switch");
 
 function updateSwitch(switchValue) {
-    if (switchValue === '0') {
-        // element with id switch_value
+    if (switchValue === 0) {
+        // find element with id switch_value, set text
         $('#switch_value').text('Off');
         $('#switch_value').toggleClass('label-danger', false);
         $('#switch_value').toggleClass('label-default', true);
-    } else if (switchValue === '1') {
+    } else if (switchValue === 1) {
         $('#switch_value').text('On');
         $('#switch_value').toggleClass('label-danger', true);
         $('#switch_value').toggleClass('label-default', false);
     }
 }
 
-switchSource.onmessage = function(switchEvent) {
+function updateThing(thingState) {
+    // thingState.switch is syntactic sugar for thingState['switch']
+    updateSwitch(thingState.switch);
+    console.log('Temperature : ', thingState.temperature);
+    console.log('Humidity: ', thingState.humidity);
+}
+
+// configure server sent event receiver
+thingSource.onmessage = function(thingEvent) {
     // event data shows on web page but at first I couldn't see it in console log
     // Chrome / View / Developer / Developer tools / console log didn't work
     // Chrome / View / Developer / JavaScript console works
     // now either one works! May be because filter default was not "all"
     // http://stackoverflow.com/questions/18760213/chrome-console-log-console-debug-are-not-working
-    // console.log(switchEvent.data);
-    // find html element with id switch_value and set text
-    updateSwitch(switchEvent.data);
+    // console.log(thingEvent.data);
+    jsonObject = $.parseJSON(thingEvent.data)
+    updateThing(jsonObject);
 }

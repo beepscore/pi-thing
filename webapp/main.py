@@ -3,6 +3,7 @@
 # import * to get render_template
 from flask import *
 
+import json
 import random
 import time
 
@@ -39,24 +40,35 @@ def led(led_state):
         return ('Unknown LED state!', 400)
     return ('', 204)
 
-# endpoint /switch
+# endpoint /thing
 # Firefox asks if want to save or open with a program
 # Chrome works
-@app.route("/switch")
-def switch():
+@app.route("/thing")
+def thing():
+
     # http://flask.pocoo.org/docs/0.11/patterns/streaming/
-    def get_switch_values():
+    def read_thing_state():
+
         while True:
-            # get current switch value 0 or 1
-            switch_value = pi_thing.read_switch()
+            # python dictionary
+            thing_state = {
+                    'switch': pi_thing.read_switch(),
+                    'temperature': pi_thing.get_temperature(),
+                    'humidity': pi_thing.get_humidity()
+                    }
+
+            # convert python dictionary to json string
+            # dumps() can serialize either dictionary or array
+            thing_state_json = json.dumps(thing_state)
 
             # server sent event specifies format:
             # data: <value>\n\n
             # http://www.html5rocks.com/en/tutorials/eventsource/basics/
-            yield('data: {0}\n\n'.format(switch_value))
+            yield 'data: {0}\n\n'.format(thing_state_json)
 
             time.sleep(1.0)
-    return Response(get_switch_values(), mimetype='text/event-stream')
+
+    return Response(read_thing_state(), mimetype='text/event-stream')
 
 @app.route("/foo")
 def achoo():
