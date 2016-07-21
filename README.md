@@ -411,3 +411,10 @@ tools/web developer/web console shows output stream
 
     data: {"humidity": 56.599998474121094, "switch": 0, "temperature": 24.100000381469727}
     data: {"humidity": 56.599998474121094, "switch": 0, "temperature": 24.100000381469727}
+
+## TODO
+git submodule update --recursive throws PERL error about locale not set
+On pi use raspi-config to set language, lang, locale
+Need to install languages set in /etc/??
+
+Then can run git submodule update --recursive to install Chart.js on pi
