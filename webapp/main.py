@@ -76,7 +76,16 @@ def thing():
 def achoo():
     return "Achoo Foo!"
 
+# Internal callback that will be called when the switch changes state.
+def switch_changed(switch_state):
+    # Broadcast a switch changed event.
+    socketio.emit('switch_changed', { 'switch': switch_state })
+
 if __name__ == "__main__":
+
+    # Register callback for switch event changes.
+    pi_thing.configure_switch_callback(switch_changed)
+
     # Listen for connections from any machine on network
     # In browser enter url http://0.0.0.0:5000/
     # Set threaded true so flask can use multiple threads.
