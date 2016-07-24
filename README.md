@@ -422,3 +422,6 @@ tools/web developer/web console shows output stream
     data: {"humidity": 56.599998474121094, "switch": 0, "temperature": 24.100000381469727}
     data: {"humidity": 56.599998474121094, "switch": 0, "temperature": 24.100000381469727}
 
+### flask-socketio
+
+    pip3 install flask-socketio
