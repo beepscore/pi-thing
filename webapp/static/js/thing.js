@@ -92,7 +92,9 @@ thingSource.onmessage = function(thingEvent) {
     updateThing(jsonObject);
 }
 
+// attempt to connect
 var socket = io.connect();
+// register to listen for event 'connect' which fires when client connects
 socket.on('connect', function() {
     // client can use emit to push to server
     // socket.emit('my event', {data: 'Client connected!'});
