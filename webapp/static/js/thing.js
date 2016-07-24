@@ -75,7 +75,7 @@ function updateThing(thingState) {
 
     // limit history to dataLengthMaximum most recent readings by removing first
     var dataLengthMaximum = 20;
-    if dhtChart.datasets[0].points.length >= dataLengthMaximum {
+    if (dhtChart.datasets[0].points.length >= dataLengthMaximum) {
         dhtChart.removeData()
     }
 }
