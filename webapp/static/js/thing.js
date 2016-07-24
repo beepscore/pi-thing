@@ -90,7 +90,8 @@ $(document).ready(function() {
     });
 
     socket.on('switch_changed', function(event) {
-        console.log(event);
+        // event has a payload json dictionary with key 'switch'
+        // call updateSwitch with value
         updateSwitch(event.switch)
     });
 
