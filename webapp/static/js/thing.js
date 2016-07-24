@@ -55,7 +55,8 @@ $(document).ready(function() {
 
     function updateThing(thingState) {
         // thingState.switch is syntactic sugar for thingState['switch']
-        updateSwitch(thingState.switch);
+        //updateSwitch(thingState.switch);
+
         console.log('Temperature : ', thingState.temperature);
         console.log('Humidity: ', thingState.humidity);
         dhtChart.addData([thingState.temperature, thingState.humidity],
