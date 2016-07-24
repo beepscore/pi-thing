@@ -88,6 +88,10 @@ $(document).ready(function() {
         console.log('Client connected!');
     });
 
+    socket.on('switch_changed', function(event) {
+        console.log(event);
+    });
+
     // Attach button click handlers
     $('#led_on').click(function() {
         console.log('LED on!');
