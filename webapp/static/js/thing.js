@@ -90,6 +90,7 @@ $(document).ready(function() {
 
     socket.on('switch_changed', function(event) {
         console.log(event);
+        updateSwitch(event.switch)
     });
 
     // Attach button click handlers
