@@ -29,6 +29,8 @@ https://www.raspberrypi.org/documentation/linux/software/python.md
 ## flask
 http://flask.pocoo.org/
 
+### flask-socket.io
+
 ## html templates
 https://html5boilerplate.com/
 
@@ -55,6 +57,9 @@ wss:// - encrypted, port 443 (same port as https://)
 
 https://en.wikipedia.org/wiki/WebSocket  
 http://www.html5rocks.com/en/tutorials/#websockets  
+
+### socket.io
+http://socket.io/
 
 ## Introduction to Service Worker
 http://www.html5rocks.com/en/tutorials/service-worker/introduction/
