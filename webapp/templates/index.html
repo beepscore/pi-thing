@@ -50,8 +50,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src=>"{{ url_for('static', filename='lib/bootstrap/js/bootstrap.min.js') }}"</script>
 
-        <script type="text/javascript" src="http://requirejs.org/docs/release/2.2.0/minified/require.js"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='lib/Chart.bundle.js') }}"></script>
+        <script src="{{ url_for('static', filename='lib/Chart.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/thing.js') }}"></script>
     </body>
 </html>

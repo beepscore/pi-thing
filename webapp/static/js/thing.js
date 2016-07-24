@@ -12,49 +12,38 @@ $(document).ready(function() {
     });
 });
 
-var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40],
-            spanGaps: false,
-        }
-    ]
-};
-
-var options = {
-    scales: {
-        xAxes: [{
-            type: 'linear',
-            position: 'bottom'
-        }]
-    }
-};
-
+// Setup temperature & humidity chart.
 // use jquery get()
-var ctx = $("#dht_chart").get(0).getContext("2d");
-// get first node in the jQuey collection
-var dhtChart = Chart.Line(ctx, {
-    data: data,
-    options: options
+// get first node in the jQuery collection
+var ctx = $('#dht_chart').get(0).getContext('2d');
+
+var dhtChart = new Chart(ctx).Line({
+    labels: [],
+    datasets: [
+    {
+        label: "Temperature (Celsius)",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        //data: []
+        data: [4, 5, 6]
+    },
+    {
+        label: "Humidity (%)",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        //data: []
+        data: [1, 2, 3]
+    }
+    ]
+
 });
 
 // Setup server sent event endpoint for /switch
