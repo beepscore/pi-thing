@@ -2,6 +2,7 @@
 
 # import * to get render_template
 from flask import *
+from flask_socketio import SocketIO
 
 import json
 import random
@@ -15,6 +16,13 @@ and PiThing to read and write to raspberry pi gpio pins.
 
 # instantiate flask app
 app = Flask(__name__)
+# can use SECRET_KEY to increase security
+#app.config['SECRET_KEY'] = 'secret!'
+
+# On flask development server, "WebSocket transport not available"
+# must fall back to long polling
+# https://flask-socketio.readthedocs.io/en/latest/
+socketio = SocketIO(app)
 
 # instantiate pi_thing as a global variable
 pi_thing = PiThing()
@@ -81,4 +89,6 @@ if __name__ == "__main__":
     # Without threading, /switch infinite loop "while True" can hog all execution time,
     # starving led code from running.
     # Multiple threads also enable app to handle multiple requests.
-    app.run(host='0.0.0.0', debug=True, threaded=True)
+
+    # start flask development server
+    socketio.run(app, host='0.0.0.0', debug=True)
