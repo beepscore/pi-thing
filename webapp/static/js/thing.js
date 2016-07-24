@@ -28,8 +28,7 @@ var dhtChart = new Chart(ctx).Line({
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
-        //data: []
-        data: [4, 5, 6]
+        data: []
     },
     {
         label: "Humidity (%)",
@@ -39,8 +38,7 @@ var dhtChart = new Chart(ctx).Line({
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(151,187,205,1)",
-        //data: []
-        data: [1, 2, 3]
+        data: []
     }
     ]
 
@@ -72,6 +70,8 @@ function updateThing(thingState) {
     updateSwitch(thingState.switch);
     console.log('Temperature : ', thingState.temperature);
     console.log('Humidity: ', thingState.humidity);
+    dhtChart.addData([thingState.temperature, thingState.humidity],
+            new Date().toLocaleTimeString());
 }
 
 // configure server sent event receiver
