@@ -41,6 +41,36 @@ class PiThing(object):
         self._dht_thread.daemon = True
         self._dht_thread.start()
 
+        # Initialize callbacks
+        self._switch_changed = None
+        self._switch_callback = None
+
+        # Configure rpio.gpio to fire an internal callback when the switch changes
+        # event detect returns pin but doesn't return state of pin
+        # event fires on BOTH i.e. pin transition RISING or FALLING
+        # event calls _switch_changed
+        # callback doesn't show argument "pin", is that implicit??
+        bouncetime_ms = 20
+        GPIO.add_event_detect(SWITCH_PIN, GPIO.BOTH, callback=self._switch_changed, bouncetime=bouncetime_ms)
+
+    def _switch_changed(self, pin):
+        """Called by the RPI.GPIO library when the switch pin changes state.
+        gets switch state and then calls _switch_callback
+        """
+        if self._switch_callback is not None:
+            # read switch
+            # switch_state = read_switch()
+            switch_state = GPIO.input(SWITCH_PIN)
+            # now that we have switch_state, can call _switch_callback
+            self._switch_callback(switch_state)
+
+    # reanmed from on_switch_change
+    def configure_switch_callback(self, callback):
+        """Sets property _switch_callback, a function that other methods can run when switch changes state.
+        Parameter callback: callback function should take one parameter, a boolean representing current switch state
+        """
+        self._switch_callback = callback
+
     def _dht_update(self):
         """Main function for DHT update thread.
         Make thread safe to avoid problems with multiple concurrent requests to one sensor.

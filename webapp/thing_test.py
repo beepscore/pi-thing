@@ -12,6 +12,18 @@ pi_thing = PiThing()
 switch = pi_thing.read_switch()
 print('Switch: {0}'.format(switch))
 
+def switch_changed(switch_state):
+    """function takes one argument, a boolean.
+    Can be provided to pi_thing as a callback
+    """
+    if switch_state:
+        print('Switch is ON')
+    else:
+        print('Switch is OFF')
+
+# tell pi_thing to run switch_changed as a callback
+pi_thing.configure_switch_callback(switch_changed)
+
 # Blink the LED forever.
 print('Blinking LED (Ctrl-C to stop)...')
 while True:
