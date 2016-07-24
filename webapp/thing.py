@@ -50,7 +50,8 @@ class PiThing(object):
         # event fires on BOTH i.e. pin transition RISING or FALLING
         # event calls _switch_changed
         # callback doesn't show argument "pin", is that implicit??
-        bouncetime_ms = 20
+        # 20 ms may be too short for app to handle, especially if not running via sudo
+        bouncetime_ms = 500
         GPIO.add_event_detect(SWITCH_PIN, GPIO.BOTH, callback=self._switch_changed, bouncetime=bouncetime_ms)
 
     def _switch_changed(self, pin):
