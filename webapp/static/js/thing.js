@@ -72,6 +72,12 @@ function updateThing(thingState) {
     console.log('Humidity: ', thingState.humidity);
     dhtChart.addData([thingState.temperature, thingState.humidity],
             new Date().toLocaleTimeString());
+
+    // limit history to dataLengthMaximum most recent readings by removing first
+    var dataLengthMaximum = 20;
+    if dhtChart.datasets[0].points.length >= dataLengthMaximum {
+        dhtChart.removeData()
+    }
 }
 
 // configure server sent event receiver
