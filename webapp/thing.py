@@ -42,7 +42,6 @@ class PiThing(object):
         self._dht_thread.start()
 
         # Initialize callbacks
-        self._switch_changed = None
         self._switch_callback = None
 
         # Configure rpio.gpio to fire an internal callback when the switch changes
