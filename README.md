@@ -47,9 +47,14 @@ http://www.html5rocks.com/en/tutorials/eventsource/basics/
 Enables server to continually push to client.  
 Client does not have to poll server.  
 
-## Websockets
-http://www.html5rocks.com/en/tutorials/#websockets
-Enables bidirectional open connection between server and client.
+## WebSocket
+Enables bidirectional open connection between server and client.  
+Handshakes over HTTP, then requests upgrade to WebSocket protocol.  
+ ws:// - not encrypted, port 80 (same port as http://)  
+wss:// - encrypted, port 443 (same port as https://)  
+
+https://en.wikipedia.org/wiki/WebSocket  
+http://www.html5rocks.com/en/tutorials/#websockets  
 
 ## Introduction to Service Worker
 http://www.html5rocks.com/en/tutorials/service-worker/introduction/
