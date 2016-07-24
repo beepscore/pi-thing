@@ -91,3 +91,10 @@ thingSource.onmessage = function(thingEvent) {
     jsonObject = $.parseJSON(thingEvent.data)
     updateThing(jsonObject);
 }
+
+var socket = io.connect();
+socket.on('connect', function() {
+    // client can use emit to push to server
+    // socket.emit('my event', {data: 'Client connected!'});
+    console.log('Client connected!');
+});
