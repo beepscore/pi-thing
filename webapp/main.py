@@ -35,19 +35,6 @@ def index():
     # render index.html, passing in switch_value
     return render_template('index.html', switch=switch_value)
 
-# use url last component to pass argument led_state to the server
-# name of defined function doesn't matter
-@app.route("/led/<int:led_state>", methods=['POST'])
-def led(led_state):
-    if led_state == 0:
-        pi_thing.set_led(False)
-    elif led_state == 1:
-        pi_thing.set_led(True)
-    else:
-        # http status code 400 bad request error
-        return ('Unknown LED state!', 400)
-    return ('', 204)
-
 @socketio.on('change_led')
 def change_led(led_state):
     if led_state == 'off':
