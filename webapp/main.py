@@ -54,7 +54,7 @@ def thing():
         while True:
             # python dictionary
             thing_state = {
-                    'switch': pi_thing.read_switch(),
+                    #'switch': pi_thing.read_switch(),
                     'temperature': pi_thing.get_temperature(),
                     'humidity': pi_thing.get_humidity()
                     }
