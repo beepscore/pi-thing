@@ -48,6 +48,13 @@ def led(led_state):
         return ('Unknown LED state!', 400)
     return ('', 204)
 
+@socketio.on('change_led')
+def change_led(led_state):
+    if led_state == 'off':
+        pi_thing.set_led(False)
+    elif led_state == 'on':
+        pi_thing.set_led(True)
+
 # endpoint /thing
 # Firefox asks if want to save or open with a program
 # Chrome works
