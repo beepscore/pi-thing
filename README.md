@@ -412,27 +412,3 @@ tools/web developer/web console shows output stream
     data: {"humidity": 56.599998474121094, "switch": 0, "temperature": 24.100000381469727}
     data: {"humidity": 56.599998474121094, "switch": 0, "temperature": 24.100000381469727}
 
-## Set locale
-git submodule update --recursive throws PERL error about locale not set
-
-Follow instructions in
-http://www.jaredwolff.com/blog/raspberry-pi-setting-your-locale/
-
-    pi@pihole:/etc $ sudo vim locale.gen
-
-uncomment line containing en_US
-
-    pi@pihole:/etc $ sudo locale-gen en_US.UTF-8
-
-Generating locales (this might take a while)...
-
-    en_GB.UTF-8... done
-    en_US.UTF-8... done
-
-Generation complete.
-
-###  submodule update
-$ git submodule update --init
-Submodule 'webapp/static/lib/Chart.js' (https://github.com/beepscore/Chart.js) registered for path 'lib/Chart.js'
-Cloning into 'webapp/static/lib/Chart.js'...
-Submodule path 'lib/Chart.js': checked out 'e94d3c0730b86f9b2059d5077e6b1544295ec61a'
