@@ -57,8 +57,10 @@ def temperature_humidity_changed(temperature, humidity):
 
 if __name__ == "__main__":
 
-    # Register callback for switch event changes.
+    # Register callbacks
+    # pi_thing will run switch_changed as a callback
     pi_thing.configure_switch_callback(switch_changed)
+    # pi_thing will run temperature_humidity_changed as a callback
     pi_thing.configure_temperature_humidity_callback(temperature_humidity_changed)
 
     # Listen for connections from any machine on network
