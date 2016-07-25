@@ -32,14 +32,14 @@ class PiThing(object):
         # Some Python developers follow this naming convention.
         self._lock = threading.Lock()
 
+        # User defined callbacks
+        self._switch_callback = None
+        self._temperature_humidity_callback = None
+
         # Create and start background thread for humidity/temperature
         self._dht_thread = threading.Thread(target=self._dht_update)
         self._dht_thread.daemon = True
         self._dht_thread.start()
-
-        # Initialize callbacks
-        self._switch_callback = None
-        self._temperature_humidity_callback = None
 
         # Configure rpio.gpio to fire an internal callback when the switch changes
         # event detect returns pin but doesn't return state of pin
@@ -56,12 +56,11 @@ class PiThing(object):
         """
         if self._switch_callback is not None:
             # read switch
-            # switch_state = read_switch()
             switch_state = GPIO.input(SWITCH_PIN)
             # now that we have switch_state, can call _switch_callback
             self._switch_callback(switch_state)
 
-    # reanmed from on_switch_change
+    # renamed from on_switch_change
     def configure_switch_callback(self, callback):
         """Sets property _switch_callback, a function that other methods can run when switch changes state.
         Parameter callback: callback function should take one parameter, a boolean representing current switch state
