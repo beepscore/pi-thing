@@ -60,7 +60,6 @@ class PiThing(object):
             # now that we have switch_state, can call _switch_callback
             self._switch_callback(switch_state)
 
-    # renamed from on_switch_change
     def configure_switch_callback(self, callback):
         """Sets property _switch_callback, a function that other methods can run when switch changes state.
         Parameter callback: callback function should take one parameter, a boolean representing current switch state
