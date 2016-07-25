@@ -42,36 +42,6 @@ def change_led(led_state):
     elif led_state == 'on':
         pi_thing.set_led(True)
 
-# endpoint /thing
-# Firefox asks if want to save or open with a program
-# Chrome works
-@app.route("/thing")
-def thing():
-
-    # http://flask.pocoo.org/docs/0.11/patterns/streaming/
-    def read_thing_state():
-
-        while True:
-            # python dictionary
-            thing_state = {
-                    #'switch': pi_thing.read_switch(),
-                    'temperature': pi_thing.get_temperature(),
-                    'humidity': pi_thing.get_humidity()
-                    }
-
-            # convert python dictionary to json string
-            # dumps() can serialize either dictionary or array
-            thing_state_json = json.dumps(thing_state)
-
-            # server sent event specifies format:
-            # data: <value>\n\n
-            # http://www.html5rocks.com/en/tutorials/eventsource/basics/
-            yield 'data: {0}\n\n'.format(thing_state_json)
-
-            time.sleep(1.0)
-
-    return Response(read_thing_state(), mimetype='text/event-stream')
-
 @app.route("/foo")
 def achoo():
     return "Achoo Foo!"
