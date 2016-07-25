@@ -53,13 +53,10 @@ $(document).ready(function() {
         }
     }
 
-    function updateThing(thingState) {
-        // thingState.switch is syntactic sugar for thingState['switch']
-        //updateSwitch(thingState.switch);
-
-        console.log('Temperature : ', thingState.temperature);
-        console.log('Humidity: ', thingState.humidity);
-        dhtChart.addData([thingState.temperature, thingState.humidity],
+    function updateTemperatureHumidity(temperature, humidity) {
+        console.log('Temperature : ', temperature);
+        console.log('Humidity: ', humidity);
+        dhtChart.addData([temperature, humidity],
                 new Date().toLocaleTimeString());
 
         // limit history to dataLengthMaximum most recent readings by removing first
@@ -77,8 +74,9 @@ $(document).ready(function() {
         // now either one works! May be because filter default was not "all"
         // http://stackoverflow.com/questions/18760213/chrome-console-log-console-debug-are-not-working
         // console.log(thingEvent.data);
-        jsonObject = $.parseJSON(thingEvent.data)
-            updateThing(jsonObject);
+        var data = $.parseJSON(thingEvent.data);
+        // data.temperature is syntactic sugar for data['temperature']
+        updateTemperatureHumidity(data.temperature, data.humidity);
     }
 
     // attempt to connect to server
