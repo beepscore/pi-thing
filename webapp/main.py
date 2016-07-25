@@ -48,10 +48,11 @@ def achoo():
 
 # Internal callback that will be called when the switch changes state.
 def switch_changed(switch_state):
-    # Broadcast a switch changed event.
+    # Broadcast a switch_changed event.
     socketio.emit('switch_changed', { 'switch': switch_state })
 
 def temperature_humidity_changed(temperature, humidity):
+    # Broadcast a temperature_humidity_changed event.
     socketio.emit('temperature_humidity_changed', { 'temperature': temperature,
         'humidity': humidity})
 
