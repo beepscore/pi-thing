@@ -81,10 +81,15 @@ def switch_changed(switch_state):
     # Broadcast a switch changed event.
     socketio.emit('switch_changed', { 'switch': switch_state })
 
+def temperature_humidity_changed(temperature, humidity):
+    socketio.emit('temperature_humidity_changed', { 'temperature': temperature,
+        'humidity': humidity})
+
 if __name__ == "__main__":
 
     # Register callback for switch event changes.
     pi_thing.configure_switch_callback(switch_changed)
+    pi_thing.configure_temperature_humidity_callback(temperature_humidity_changed)
 
     # Listen for connections from any machine on network
     # In browser enter url http://0.0.0.0:5000/
