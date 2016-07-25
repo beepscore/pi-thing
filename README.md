@@ -100,11 +100,19 @@ pin 24 -> pole (middle leg)
 one throw 3.3V
 one throw gnd
 
+#### app works with bare input wire, is unreliable with mechanical switch
+2016-07-24  
+For many commits, sliding the switch has caused the program to freeze or lock up.  
+I thought this was a software bug only.  
+Today I used the input wire without a switch similar to technique shown in video.  
+This way the app works fine!  
+So the app may need to be adjusted to work with different mechanical switches.  
+
 ## ssh
-Connect to rpi via ssh, either by ethernet cable + sharing/internet sharing or via wifi.
-Note: If flask app encounters an error, flask server may stop.
-In addition, pi may disconnect from ssh session with mac, even if using ethernet!
-I don't know why this happens.
+Connect to rpi via ssh, either by ethernet cable + sharing/internet sharing or via wifi.  
+Note: If flask app encounters an error, flask server may stop.  
+In addition, pi may disconnect from ssh session with mac, even if using ethernet!  
+I don't know why this happens.  
 
 ## Flask
 
