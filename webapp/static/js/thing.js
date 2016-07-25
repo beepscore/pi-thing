@@ -32,14 +32,6 @@ $(document).ready(function() {
 
     });
 
-    // // Setup server sent event endpoint for /switch
-    // // https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
-
-    // // When javascript source file is not in python template, I think can't use flask url_for
-    // //var thingSource = new EventSource("{{ url_for('thing') }}");
-    // // use url literal
-    // var thingSource = new EventSource("/thing");
-
     function updateSwitch(switchValue) {
         if (switchValue === 0) {
             // find element with id switch_value, set text
@@ -65,19 +57,6 @@ $(document).ready(function() {
             dhtChart.removeData()
         }
     }
-
-    // // configure server sent event receiver
-    // thingSource.onmessage = function(thingEvent) {
-    //     // event data shows on web page but at first I couldn't see it in console log
-    //     // Chrome / View / Developer / Developer tools / console log didn't work
-    //     // Chrome / View / Developer / JavaScript console works
-    //     // now either one works! May be because filter default was not "all"
-    //     // http://stackoverflow.com/questions/18760213/chrome-console-log-console-debug-are-not-working
-    //     // console.log(thingEvent.data);
-    //     var data = $.parseJSON(thingEvent.data);
-    //     // data.temperature is syntactic sugar for data['temperature']
-    //     updateTemperatureHumidity(data.temperature, data.humidity);
-    // }
 
     // attempt to connect to server
     var socket = io.connect();
