@@ -32,10 +32,6 @@ class PiThing(object):
         # Some Python developers follow this naming convention.
         self._lock = threading.Lock()
 
-        # humidity as a percentage 0 - 100
-        self._humidity = None
-        # temperature in degrees Celsius
-        self._temperature = None
         # Create and start background thread for humidity/temperature
         self._dht_thread = threading.Thread(target=self._dht_update)
         self._dht_thread.daemon = True
@@ -43,6 +39,7 @@ class PiThing(object):
 
         # Initialize callbacks
         self._switch_callback = None
+        self._temperature_humidity_callback = None
 
         # Configure rpio.gpio to fire an internal callback when the switch changes
         # event detect returns pin but doesn't return state of pin
@@ -71,6 +68,13 @@ class PiThing(object):
         """
         self._switch_callback = callback
 
+    def configure_temperature_humidity_callback(self, callback):
+        """Sets property _temperature_humidity_callback, a function that other methods can run
+        Parameter callback: callback function should take two parameters,
+        temperature in degrees Celsius and humidity in percent
+        """
+        self._temperature_humidity_callback = callback
+
     def _dht_update(self):
         """Main function for DHT update thread.
         Make thread safe to avoid problems with multiple concurrent requests to one sensor.
@@ -79,23 +83,15 @@ class PiThing(object):
         """
         while True:
             with self._lock:
-                self._humidity, self._temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
-            # sensor updates every 2 seconds, so read at same frequency
-            time.sleep(2.0)
+                # Sensor updates every 2 seconds.
+                # humidity as a percentage 0 - 100
+                # temperature in degrees Celsius
+                humidity, temperature = Adafruit_DHT.read_retry(DHT_TYPE, DHT_PIN)
+                if self._temperature_humidity_callback is not None:
+                    self._temperature_humidity_callback(temperature, humidity)
 
-    def get_humidity(self):
-        """returns humidity as a percentage 0 - 100. Sensor updates every 2 seconds.
-        """
-        # 'with' is a context, lock makes method thread safe.
-        with self._lock:
-            return self._humidity
-
-    def get_temperature(self):
-        """returns temperature in degrees Celsius. Sensor updates every 2 seconds.
-        Uses lock for thread safety.
-        """
-        with self._lock:
-            return self._temperature
+            delay_seconds = 2.0
+            time.sleep(delay_seconds)
 
     def read_switch(self):
         """returns 1 if switch is high, 0 if switch is low.

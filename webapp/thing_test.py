@@ -21,8 +21,17 @@ def switch_changed(switch_state):
     else:
         print('Switch is OFF')
 
+def temperature_humidity_changed(temperature, humidity):
+    """function takes two arguments
+    Can be provided to pi_thing as a callback
+    """
+    print('TemperatureDegreesC: {0:0.2F} Humidity: {1:0.2F}'.format(temperature, humidity))
+
 # tell pi_thing to run switch_changed as a callback
 pi_thing.configure_switch_callback(switch_changed)
+
+# tell pi_thing to run temperature_humidity_changed as a callback
+pi_thing.configure_temperature_humidity_callback(temperature_humidity_changed)
 
 # Blink the LED forever.
 print('Blinking LED (Ctrl-C to stop)...')
@@ -31,8 +40,4 @@ while True:
     time.sleep(0.1)
     pi_thing.set_led(False)
     time.sleep(0.9)
-
-    humidity = pi_thing.get_humidity()
-    temperature = pi_thing.get_temperature()
-    print('TemperatureDegreesC: {0:0.2F} Humidity: {1:0.2F}'.format(temperature, humidity))
 
